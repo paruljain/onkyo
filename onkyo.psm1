@@ -75,9 +75,3 @@ function Onkyo-Get {
     }
     $response
 }
-
-Export-ModuleMember -Function Onkyo-Discover
-Export-ModuleMember -Function Onkyo-Connect
-Export-ModuleMember -Function Onkyo-Disconnect
-Export-ModuleMember -Function Onkyo-Send
-Export-ModuleMember -Function Onkyo-Get
