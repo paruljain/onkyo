@@ -1,3 +1,5 @@
+$response = @{}
+
 function Onkyo-Discover {
     $udpClient = New-Object System.Net.Sockets.UdpClient
     $udpClient.EnableBroadcast = $true
@@ -34,6 +36,7 @@ function Onkyo-Send ([string[]]$commands) {
     if (!$script:socket.Connected) { throw 'Not Connected' }
     foreach ($command in $commands) {
         if ($command.length -lt 3) { continue }
+        #write-host $command
         # If no parameter specified add QSTN to the command to query the value of the attribute
         if ($command.Length -eq 3) { $command += 'QSTN' }
 
@@ -51,7 +54,6 @@ function Onkyo-Send ([string[]]$commands) {
 function Onkyo-Get {
     if (!$script:socket.Connected) { throw 'Not connected' }
     $stream = $script:socket.GetStream()
-    $response = @{}
     while ($stream.DataAvailable) {
         # Read the header and determine length of command
 
