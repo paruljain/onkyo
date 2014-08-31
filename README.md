@@ -17,6 +17,9 @@ EXAMPLE
     
     $onkyo.Send(('pwr01','mvl20', 'sli24', 'tun10670'))
     
+    # Wait for commands to run on receiver
+    Start-Sleep -Seconds 5
+    
     # You can also access lastest value of any control through the Received hashtable
     # as an alternative to Register-EngineEvent above
     'Current master volume in hexadecimal is: ' + $onkyo.Received['MVL']
